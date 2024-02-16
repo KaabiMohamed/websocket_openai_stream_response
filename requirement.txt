@@ -4,3 +4,6 @@ websockets
 langchain
 uvicorn
 python-dotenv
+prometheus-fastapi-instrumentator
+asyncio
+pydantic
