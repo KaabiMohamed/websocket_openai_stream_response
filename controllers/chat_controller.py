@@ -34,9 +34,9 @@ async def websocket_endpoint(websocket: WebSocket):
         MOOD_CHECK.labels(user="current_user").set(mood_index)
         # Sends the received message for processing and awaits the response
         async for message in send_message(data):
-            await websocket.send_json(ChatResponse(id=id, object="chat.completion", content=message).to_json())
+            await websocket.send_text(ChatResponse(id=id, object="chat.completion", content=message).to_json())
         # Once the chat is complete, sends a final message
-        await websocket.send_json(ChatResponse(
+        await websocket.send_text(ChatResponse(
             id=id,
             object="chat.completion",
             finish_reason=FinishReasonEnum.finish,
